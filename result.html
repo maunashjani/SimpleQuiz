@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+	
+	<title>Result</title>
+	
+	<script>
+
+		//Function to check the answers from the array
+		var showResult = function() {
+
+			//Convert the data to a JavaScript object
+			var dataList = JSON.parse(window.localStorage.getItem('quiz'));
+            
+            obj = JSON.parse(JSON.stringify(dataList));
+
+			var answer1 = obj.answers[0].value; 
+			var answer2 = obj.answers[1].value; 
+			var answer3 = obj.answers[2].value; 
+			var answer4 = obj.answers[3].value; 
+			var answer5 = obj.answers[4].value; 
+			
+             var totalCount = 0;
+            
+			//Check answers and increment totalCount
+             if (answer1 == "A") { totalCount++; }
+             if (answer2 == "B") { totalCount++; }
+             if (answer3 == "C") { totalCount++; }
+             if (answer4 == "D") { totalCount++; }
+             if (answer5 == "A") { totalCount++; }
+           
+			document.getElementById("results").innerHTML = "<h3>" + totalCount + " out of 5 answers are correct.</h3>";
+		}
+
+	</script>
+</head>
+
+<body onload="showResult()">
+
+	<div id="page" class="container">
+
+		<h1>Quiz</h1>
+       
+	<div id='results'>
+		
+	</div>
+
+	</div>
+
+</body>
+</html>
